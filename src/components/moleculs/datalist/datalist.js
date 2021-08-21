@@ -53,7 +53,7 @@ const DataList = () => {
             setisLoading(false)
         }
     }
-    console.log(data)
+
     useEffect(() => {
         setTimeout(() => {
             fetchData()

@@ -8,6 +8,7 @@
     width: 1244px;
     display: grid;
     margin: auto;
+    z-index: 0
 }
 
 .greeting-img{
@@ -21,8 +22,6 @@
     color: #ffffff; 
     padding: 0 3rem;
     line-height: 5rem;
-    position: relative;
-    margin-top: -28.5rem;
 }
 
 @media only screen and (min-width: 1800px) and (max-width: 1950px) {
@@ -48,7 +47,7 @@
 
 .second-greet{
     font-size: 1.5rem;
-    margin-top: -22.5rem;
+    margin-top: -4rem;
     z-index: 0;
 }
 
