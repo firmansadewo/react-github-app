@@ -14,10 +14,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "json-server": "json-server --watch data/main-movies.json --port 9107",
-    "start": "concurrently \"react-scripts start\" \"npm run json-server\"",
-    "build": "concurrently \"react-scripts build\" \"npm run json-server\"",
-    "test": "concurrently \"react-scripts test\" \"npm run json-server\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "npm start"
   },
@@ -38,10 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^6.2.0",
-    "json-server": "^0.16.3"
-  },
-  "proxy": "http://localhost:9107"
+  }
 }

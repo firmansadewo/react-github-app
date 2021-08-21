@@ -3,7 +3,7 @@ import axios from 'axios'
 import Slider from '../../atoms/slider/slider'
 
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import Pagination from '../../atoms/pagination/pagination'
 import PerPage from '../../atoms/perPage/perPage'
@@ -22,12 +22,17 @@ const DataList = () => {
     const [isLoading, setisLoading] = useState(true)
     const history = useHistory()
 
+    const location = useLocation()
+    let split = location.search.split("username=")
+    let username = split[1]
+    console.log(username)
+
     const SetPerPage = (newVal) => {
         setOptions(options => ({ ...options, itemsPerPage: newVal, }))
         setOptions(options => ({ ...options, page: 1 }))
     }
 
-    let url = 'https://api.github.com/orgs/arduino-libraries/repos'
+    let url = `https://api.github.com/users/${username}/repos`
     const abortController = new AbortController()
 
     let perPage = options.itemsPerPage && `per_page=${options.itemsPerPage}`
@@ -51,16 +56,18 @@ const DataList = () => {
             fetchData()
         }, 700)
         return () => abortController.abort()
-    }, [options.itemsPerPage])
+    }, [options.itemsPerPage, username])
 
     return (
         <section>
             <section>
-                <span className="section-title">
-                    <p className="section-mark">.</p>
-                    <p>Repo List</p>
+                <div className="section-header">
+                    <span className="section-title">
+                        <p className="section-mark">.</p>
+                        <p>Repo List</p>
+                    </span>
                     <PerPage options={options} setPerPage={SetPerPage} />
-                </span>
+                </div>
                 <div className="data-wrapper">
                     {isLoading ? <div className="loading-wrapper">
                         <div className="loading" />
@@ -75,7 +82,9 @@ const DataList = () => {
                             </div>
                         )}
                 </div>
-                <Pagination options={options} fetch={fetchData} />
+                <div className="section-pagination">
+                    <Pagination options={options} fetch={fetchData} />
+                </div>
             </section>
         </section>
     )

@@ -16,22 +16,18 @@ const Search = ({ placeholder }) => {
 
 
 
-    let url = 'https://www.omdbapi.com?apikey=faf7e5bb'
+    let url = 'https://api.github.com/search/users'
     const searchData = async () => {
         setisLoading(true)
-        let search = await axios.post(`${url}&s=${searchTerm}`)
+        let search = await axios.get(`${url}?q=${searchTerm}`)
         setisLoading(false)
-        if (search.data.Response == "False") {
-            setError(search.data.Error)
-            return setData([])
-        }
-        setData(search.data.Search)
 
+        setData(search.data.items)
     }
 
     const searchResult = useMemo(() => {
         if (data != null || data.length != 0) {
-            return data.filter(item => item.Title.toLowerCase().includes(searchTerm.toLowerCase()))
+            return data.filter(item => item.login.toLowerCase().includes(searchTerm.toLowerCase()))
         }
         return ""
     })
@@ -42,7 +38,7 @@ const Search = ({ placeholder }) => {
     }
 
     const handleClick = (item) => {
-        setSearchTerm(item.Title)
+        setSearchTerm(item.login)
         setShowOptions(true)
         setActiveItem(item.imdbID)
     }
@@ -72,13 +68,13 @@ const Search = ({ placeholder }) => {
             <div className="dropdown-class" onClick={() => setShowOptions(true)} >
                 {showOptions && <ul>
                     {isLoading ?
-                        <li className="item-class">Searching movies...</li>
+                        <li className="item-class">Searching user by username...</li>
                         : searchResult.length == 0 && isLoading == false && error == 'Too many results.' ?
                             <li className="item-class">Data terlalu banyak.</li>
                             : searchResult.length == 0 && isLoading == false ?
                                 <li className="item-class">Tidak ada data.</li>
                                 : searchResult.filter((_, idx) => idx < 5).map((item, index) =>
-                                    <li onClick={() => { handleClick(item); history.push(`/${item.imdbID}`) }} className="item-class" key={index}>{item.Title}</li>
+                                    <li onClick={() => { handleClick(item); history.push(`/?username=${item.login}`) }} className="item-class" key={index}>{item.login}</li>
                                 )}
                 </ul>}
             </div>

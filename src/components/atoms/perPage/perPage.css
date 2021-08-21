@@ -1,7 +1,6 @@
 .perpage-wrapper{
     display: flex;
-    justify-content: flex-end;
-    margin-right: -1rem;
+    align-items: center;
 }
 
 .perpage-box {

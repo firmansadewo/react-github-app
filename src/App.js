@@ -4,8 +4,6 @@ import NavBar from './components/moleculs/navbar/navbar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './components/moleculs/footer/footer';
 import MainPage from './pages/MainPage';
-import DetailPage from './pages/detailPage/detailPage';
-import FilterPage from './pages/filterPage/filterPage';
 
 function App() {
   return (
@@ -19,12 +17,6 @@ function App() {
           <Switch>
             <Route exact path="/">
               <MainPage />
-            </Route>
-            <Route path="/filter">
-              <FilterPage />
-            </Route>
-            <Route path="/:id" >
-              <DetailPage />
             </Route>
           </Switch>
         </section>
