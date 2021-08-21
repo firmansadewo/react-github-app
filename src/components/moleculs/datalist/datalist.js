@@ -1,9 +1,9 @@
 import './datalist.css'
 import axios from 'axios'
-import Slider from '../../atoms/slider/slider'
+import not_found from '../../../assets/img/not_found.png'
 
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Redirect, useLocation } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import Pagination from '../../atoms/pagination/pagination'
 import PerPage from '../../atoms/perPage/perPage'
@@ -13,7 +13,7 @@ const DataList = () => {
     const [options, setOptions] = useState({
         page: 1,
         visible: 5,
-        per_page: [5, 10, 15],
+        per_page: [5, 10],
         itemsPerPage: 5,
         totalPages: 1,
         filter: ''
@@ -25,7 +25,6 @@ const DataList = () => {
     const location = useLocation()
     let split = location.search.split("username=")
     let username = split[1]
-    console.log(username)
 
     const SetPerPage = (newVal) => {
         setOptions(options => ({ ...options, itemsPerPage: newVal, }))
@@ -42,6 +41,10 @@ const DataList = () => {
         try {
             const data = await axios.get(`${url}?${query}`, { signal: abortController.signal })
 
+            if (data.status == 403 || data.status == "403") {
+                return setData(null)
+            }
+
             setData(data.data)
 
             setisLoading(false)
@@ -50,7 +53,7 @@ const DataList = () => {
             setisLoading(false)
         }
     }
-
+    console.log(data)
     useEffect(() => {
         setTimeout(() => {
             fetchData()
@@ -72,15 +75,20 @@ const DataList = () => {
                     {isLoading ? <div className="loading-wrapper">
                         <div className="loading" />
                     </div> :
-                        data != null && data.map((item, index) =>
-                            <div>
-                                <div className="data-card" onClick={() => history.push(`/${item.id}`)} key={index}>
-                                    <p className="data-title">{item.name}</p>
-                                    <p className="data-released">{item.full_name}</p>
-                                    <p className="data-released">{item.language}</p>
+                        data == null || data.length == 0 ?
+                            <div className="data-notfound-wrapper">
+                                <img className="data-not-found" src={not_found} alt="not_found" />
+                            </div> :
+                            data.map((item, index) =>
+                                <div>
+                                    <div className="data-card" onClick={() => window.location.href = `https://github.com/${item.full_name}`} key={index}>
+                                        <p className="data-title">{item.name}</p>
+                                        <p className="data-released">{item.full_name}</p>
+                                        <p className="data-released">{item.language}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        )}
+                            )
+                    }
                 </div>
                 <div className="section-pagination">
                     <Pagination options={options} fetch={fetchData} />
