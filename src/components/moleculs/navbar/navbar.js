@@ -21,7 +21,7 @@ const NavBar = () => {
                 </Link>
 
                 <div className="nav-menu">
-                    <p className="menu" onClick={() => history.push('/filter')}>Advance Filter</p>
+                    {/* <p className="menu" onClick={() => history.push('/filter')}>Advance Filter</p> */}
                 </div>
                 {/* search bar */}
                 <div className="search-wrapper">

@@ -52,13 +52,13 @@
 }
 
 .pages{
-    color: #131313;
+    color: #ffffff;
 }
 
 .page-active{
-    background-color: #df9847;
+    background-color: #0f4977;
 }
 
 .pages:hover {
-    background-color: #df9847;
+    background-color: #2a8fe2;
 }

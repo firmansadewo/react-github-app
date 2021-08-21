@@ -10,7 +10,7 @@ import FilterPage from './pages/filterPage/filterPage';
 function App() {
   return (
     <Router>
-      <div>
+      <div className="app-wrapper">
         <div className="app-header">
           <NavBar />
         </div>

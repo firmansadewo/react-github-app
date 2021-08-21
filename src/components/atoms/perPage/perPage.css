@@ -1,0 +1,16 @@
+.perpage-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -1rem;
+}
+
+.perpage-box {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+.perpage-box:focus{
+    outline: none;
+}
