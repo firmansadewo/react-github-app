@@ -10,7 +10,6 @@ const Search = ({ placeholder }) => {
     const [showOptions, setShowOptions] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
     const [isLoading, setisLoading] = useState(false)
-    const [activeItem, setActiveItem] = useState(0)
     const [error, setError] = useState('')
     const history = useHistory()
 
@@ -40,7 +39,9 @@ const Search = ({ placeholder }) => {
     const handleClick = (item) => {
         setSearchTerm(item.login)
         setShowOptions(true)
-        setActiveItem(item.imdbID)
+        setTimeout(() => {
+            setShowOptions(false)
+        }, 200);
     }
 
     useEffect(() => {
