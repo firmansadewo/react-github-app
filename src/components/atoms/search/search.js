@@ -74,7 +74,12 @@ const Search = ({ placeholder }) => {
                             : searchResult.length == 0 && isLoading == false ?
                                 <li className="item-class">Tidak ada data.</li>
                                 : searchResult.filter((_, idx) => idx < 5).map((item, index) =>
-                                    <li onClick={() => { handleClick(item); history.push(`/?username=${item.login}`) }} className="item-class" key={index}>{item.login}</li>
+                                    <li onClick={() => { handleClick(item); history.push(`/?username=${item.login}`) }} className="item-class" key={index}>
+                                        <span class="avatar-wrapper">
+                                            {item.login}
+                                            <img className="avatar-class" src={item.avatar_url} alt="profile-pic" />
+                                        </span>
+                                    </li>
                                 )}
                 </ul>}
             </div>

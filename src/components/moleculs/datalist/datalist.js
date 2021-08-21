@@ -83,8 +83,8 @@ const DataList = () => {
                                 <div>
                                     <div className="data-card" onClick={() => window.location.href = `https://github.com/${item.full_name}`} key={index}>
                                         <p className="data-title">{item.name}</p>
-                                        <p className="data-released">{item.full_name}</p>
-                                        <p className="data-released">{item.language}</p>
+                                        <p className="data-fullname">{item.full_name}</p>
+                                        <p className="data-language">{item.language}</p>
                                     </div>
                                 </div>
                             )

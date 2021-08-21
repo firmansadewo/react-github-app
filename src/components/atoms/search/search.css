@@ -43,10 +43,24 @@
     font-size: 1rem;
     list-style-type: none; 
     padding: 0 0.19rem 0.63rem 0;
-    margin-left: -1.56rem;
+    margin: 0 2rem 0 -1.56rem;
+    display: flex;
 }
 
 .item-class:hover{
     color: #1062a5;
     cursor: pointer;
+}
+
+.avatar-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.avatar-class{
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
 }
