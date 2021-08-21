@@ -1,0 +1,59 @@
+.greeting-card-wrapper{
+    height: 15rem;
+    width: 100%;
+    background-color: #0f4977;
+}
+
+.greeting-card{
+    width: 1244px;
+    display: grid;
+    margin: auto;
+}
+
+.greeting-img{
+    width: 100%;
+    margin-top: -15rem;
+    clip-path: polygon(0 0, 100% 0, 100% 74%, 0 74%);
+}
+
+
+.greeting-text{
+    color: #ffffff; 
+    padding: 0 3rem;
+    line-height: 5rem;
+    position: relative;
+    margin-top: -28.5rem;
+}
+
+@media only screen and (min-width: 1800px) and (max-width: 1950px) {
+    .greeting-img{
+        margin-top: -19rem;
+        clip-path: polygon(0 0, 100% 0, 100% 58.5%, 0 58.5%);
+    }
+
+    .greeting-text{
+        margin-top: -44.5rem;
+    }
+
+    .second-greet{
+        top: -16rem;
+    }
+}
+
+.first-greet{
+    font-size: 2rem;
+    padding-top: 2rem;
+    z-index: 0;
+}
+
+.second-greet{
+    font-size: 1.5rem;
+    margin-top: -22.5rem;
+    z-index: 0;
+}
+
+.first-list{
+    height: 32rem;
+    width: 100%;
+    background-color: #ffffffec;
+}

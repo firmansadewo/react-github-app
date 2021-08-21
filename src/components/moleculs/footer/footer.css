@@ -1,0 +1,19 @@
+.footer{
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #ffffff;
+}
+
+.footer-divider{
+    width: 90%;
+    margin: auto;
+    height: 0.1rem;
+    background-color: #555555;
+}
+
+.footer-desc{
+    padding: 15px;
+    font-size: 0.95rem;
+    color:#555555;
+    text-align: center;
+}
